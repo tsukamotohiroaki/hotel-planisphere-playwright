@@ -16,6 +16,13 @@
 
 テスト分析 → テスト設計 → 自動化対象の選別 → 実装 → CIで実行
 
+分析・設計は、各工程の成果物に対してレビューを受け、指摘をもとに書き直すサイクルで進めています。
+初版・レビュー・書き直しをすべて履歴に残し、「なぜその判断に至ったか」を後から追えるようにしています。
+
+- 成果物：`docs/test-analysis.md`、`docs/test-design.md`
+- レビュー記録：`docs/reviews/`（回ごとに1ファイル）
+- 設計の途中で分析の抜けに気づいた場合は、分析に戻って見直す
+
 ## 🛠 技術スタック
 
 - Playwright / TypeScript
@@ -26,7 +33,9 @@
 ```
 hotel-planisphere-playwright/
  ├ docs/
- │  └ test-design.md
+ │  ├ test-analysis.md
+ │  ├ test-design.md
+ │  └ reviews/
  ├ tests/
  │  ├ login.spec.ts
  │  └ reserve.spec.ts
