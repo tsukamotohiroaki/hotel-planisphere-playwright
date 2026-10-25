@@ -48,10 +48,3 @@ hotel-planisphere-playwright/
     npm ci
     npx playwright test
     npx playwright test --ui
-
-## 🗺 ロードマップ
-
-- [x] 初期セットアップ・CI構築
-- [ ] トップページのUI表示確認
-- [ ] ログイン
-- [ ] 宿泊予約（境界値・デシジョンテーブル）
