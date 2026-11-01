@@ -28,6 +28,7 @@ const page1Promise = page.waitForEvent('popup');
 await page.locator('.card').filter({ hasText: '素泊まり' }).getByRole('link', { name: 'このプランで予約' }).click();
 const page1 = await page1Promise;
 const reserve = new ReservePage(page1);        // 宿泊予約画面の部品を作る
+await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
 await reserve.checkIn.fill(nearestDay(1));
 await reserve.nights.fill('1');
 await reserve.people.fill('1');
