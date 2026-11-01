@@ -15,4 +15,13 @@ export class ReservePage {
     this.people = page.getByRole('spinbutton', { name: '人数 必須' });
     this.total = page.locator('#total-bill');
   }
+
+  // 宿泊日・宿泊数・人数を入力する
+  // 最後に Tab で人数の欄から離れて、合計を計算し直させる（Enter だとフォームを送信してしまうため Tab にする）
+  async fillStay(checkIn: string, nights: string, people: string) {
+    await this.checkIn.fill(checkIn);
+    await this.nights.fill(nights);
+    await this.people.fill(people);
+    await this.people.press('Tab');
+  }
 }
