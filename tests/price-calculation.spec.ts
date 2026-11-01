@@ -78,3 +78,11 @@ test('宿泊数-04（カップル限定プラン・月曜から2泊・2人・追
   await reserve.fillStay(nearestDay(1), '2', '2');
   await expect(reserve.total).toContainText('32,000円');
 });
+
+test('人数-02（素泊まり・直近の月曜から1泊・2人・追加なし）', async ({ page }) => {
+  const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
+  const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
+  await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
+  await reserve.fillStay(nearestDay(1), '1', '2');
+  await expect(reserve.total).toContainText('11,000円');
+});
