@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { ReservePage } from '../pages/ReservePage';
+import { PlansPage } from '../pages/PlansPage';
 
 // 実行日から見て、直近の指定した曜日の日付を「yyyy/mm/dd」の形で返す。
 // 宿泊日は当日を選べないため、明日から数え始める。
@@ -23,14 +24,11 @@ function nearestDay(weekday: number): string {
   return `${yyyy}/${mm}/${dd}`;
 }
 test('曜日-01（素泊まり・直近の月曜から1泊・1人・追加なし）', async ({ page }) => {
-await page.goto('/ja/plans.html');
-const page1Promise = page.waitForEvent('popup');
-await page.locator('.card').filter({ hasText: '素泊まり' }).getByRole('link', { name: 'このプランで予約' }).click();
-const page1 = await page1Promise;
-const reserve = new ReservePage(page1);        // 宿泊予約画面の部品を作る
-await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
-await reserve.checkIn.fill(nearestDay(1));
-await reserve.nights.fill('1');
-await reserve.people.fill('1');
-await expect(reserve.total).toContainText('5,500円');
+  const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
+  const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
+  await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
+  await reserve.checkIn.fill(nearestDay(1));
+  await reserve.nights.fill('1');
+  await reserve.people.fill('1');
+  await expect(reserve.total).toContainText('5,500円');
 });
