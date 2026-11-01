@@ -42,3 +42,23 @@ test('曜日-02（素泊まり・直近の土曜から1泊・1人・追加なし
   await reserve.people.fill('1');
   await expect(reserve.total).toContainText('6,875円');
 });
+
+test('曜日-03（素泊まり・直近の金曜から2泊・1人・追加なし）', async ({ page }) => {
+  const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
+  const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
+  await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
+  await reserve.checkIn.fill(nearestDay(5));
+  await reserve.nights.fill('2');
+  await reserve.people.fill('1');
+  await expect(reserve.total).toContainText('12,375円');
+});
+
+test('曜日-04（素泊まり・直近の日曜から2泊・1人・追加なし）', async ({ page }) => {
+  const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
+  const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
+  await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
+  await reserve.checkIn.fill(nearestDay(0));
+  await reserve.nights.fill('2');
+  await reserve.people.fill('1');
+  await expect(reserve.total).toContainText('12,375円');
+});
