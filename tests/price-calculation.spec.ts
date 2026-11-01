@@ -6,8 +6,18 @@ await page.getByRole('link', { name: '宿泊予約' }).click();
 const page1Promise = page.waitForEvent('popup');
 await page.getByRole('link', { name: 'このプランで予約' }).nth(1).click();
 const page1 = await page1Promise;
-await page1.getByRole('textbox', { name: '宿泊日 必須' }).click();
-await page1.getByRole('link', { name: '2', exact: true }).click();
+const today = new Date();
+let days = 8 - today.getDay();
+if (days === 8) {
+  days = 1;
+}
+const monday = new Date();
+monday.setDate(monday.getDate() + days);
+const yyyy = monday.getFullYear();
+const mm = String(monday.getMonth() + 1).padStart(2, '0');
+const dd = String(monday.getDate()).padStart(2, '0');
+const checkIn = `${yyyy}/${mm}/${dd}`;
+await page1.getByRole('textbox', { name: '宿泊日 必須' }).fill(checkIn); 
 await page1.getByRole('spinbutton', { name: '宿泊数 必須' }).click();
 await page1.getByRole('spinbutton', { name: '宿泊数 必須' }).fill('1');
 await page1.getByRole('spinbutton', { name: '人数 必須' }).click();
