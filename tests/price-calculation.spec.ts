@@ -4,7 +4,7 @@ test('曜日-01（素泊まり・直近の月曜から1泊・1人・追加なし
 await page.goto('https://hotel-example-site.takeyaqa.dev/ja/');
 await page.getByRole('link', { name: '宿泊予約' }).click();
 const page1Promise = page.waitForEvent('popup');
-await page.getByRole('link', { name: 'このプランで予約' }).nth(1).click();
+await page.locator('.card').filter({ hasText: '素泊まり' }).getByRole('link', { name: 'このプランで予約' }).click();
 const page1 = await page1Promise;
 const today = new Date();
 let days = 8 - today.getDay();
