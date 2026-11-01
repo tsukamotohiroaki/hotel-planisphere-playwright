@@ -1,8 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-test('曜日-01（素泊まり・直近の月曜から1泊・1人・追加なし2）', async ({ page }) => {
-await page.goto('https://hotel-example-site.takeyaqa.dev/ja/');
-await page.getByRole('link', { name: '宿泊予約' }).click();
+test('曜日-01（素泊まり・直近の月曜から1泊・1人・追加なし）', async ({ page }) => {
+await page.goto('/ja/plans.html');
 const page1Promise = page.waitForEvent('popup');
 await page.locator('.card').filter({ hasText: '素泊まり' }).getByRole('link', { name: 'このプランで予約' }).click();
 const page1 = await page1Promise;
