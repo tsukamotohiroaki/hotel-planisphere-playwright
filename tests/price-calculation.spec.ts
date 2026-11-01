@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { ReservePage } from '../pages/ReservePage';
 
 // 実行日から見て、直近の指定した曜日の日付を「yyyy/mm/dd」の形で返す。
 // 宿泊日は当日を選べないため、明日から数え始める。
@@ -26,9 +27,9 @@ await page.goto('/ja/plans.html');
 const page1Promise = page.waitForEvent('popup');
 await page.locator('.card').filter({ hasText: '素泊まり' }).getByRole('link', { name: 'このプランで予約' }).click();
 const page1 = await page1Promise;
-const checkIn = nearestDay(1);
-await page1.getByRole('textbox', { name: '宿泊日 必須' }).fill(checkIn);
-await page1.getByRole('spinbutton', { name: '宿泊数 必須' }).fill('1');
-await page1.getByRole('spinbutton', { name: '人数 必須' }).fill('1');
-await expect(page1.locator('#total-bill')).toContainText('5,500円');
+const reserve = new ReservePage(page1);        // 宿泊予約画面の部品を作る
+await reserve.checkIn.fill(nearestDay(1));
+await reserve.nights.fill('1');
+await reserve.people.fill('1');
+await expect(reserve.total).toContainText('5,500円');
 });
