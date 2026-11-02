@@ -175,3 +175,14 @@ test.describe('追加プラン（素泊まり・直近の月曜から2泊・2人
     await expect(reserve.total).toContainText('22,000円');
   });
 });
+
+test('追加プラン-土日-01（素泊まり・直近の土曜から2泊・2人・朝食バイキング・昼からチェックインプラン・お得な観光プラン）', async ({ page }) => {
+  const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
+  const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
+  await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
+  await reserve.fillStay(nearestDay(6), '2', '2');
+  await reserve.breakfast.check();
+  await reserve.earlyCheckIn.check();
+  await reserve.sightseeing.check();
+  await expect(reserve.total).toContainText('35,500円');
+});
