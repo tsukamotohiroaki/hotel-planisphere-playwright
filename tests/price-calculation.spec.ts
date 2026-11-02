@@ -90,7 +90,7 @@ test.describe('追加プラン（素泊まり・直近の月曜から2泊・2人
   test('追加プラン-01（朝食バイキング・昼からチェックインプラン・お得な観光プラン）', async ({ page }) => {
     const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
     const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
-    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ 
+    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
     await reserve.fillStay(nearestDay(1), '2', '2');
     await reserve.breakfast.check();
     await reserve.earlyCheckIn.check();
@@ -101,7 +101,7 @@ test.describe('追加プラン（素泊まり・直近の月曜から2泊・2人
   test('追加プラン-02（朝食バイキング・昼からチェックインプラン）', async ({ page }) => {
     const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
     const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
-    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ  
+    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
     await reserve.fillStay(nearestDay(1), '2', '2');
     await reserve.breakfast.check();
     await reserve.earlyCheckIn.check();
@@ -112,7 +112,7 @@ test.describe('追加プラン（素泊まり・直近の月曜から2泊・2人
   test('追加プラン-03（朝食バイキング・お得な観光プラン）', async ({ page }) => {
     const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
     const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
-    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ  
+    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
     await reserve.fillStay(nearestDay(1), '2', '2');
     await reserve.breakfast.check();
     await reserve.earlyCheckIn.uncheck();
@@ -123,7 +123,7 @@ test.describe('追加プラン（素泊まり・直近の月曜から2泊・2人
   test('追加プラン-04（朝食バイキング）', async ({ page }) => {
     const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
     const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
-    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ 
+    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
     await reserve.fillStay(nearestDay(1), '2', '2');
     await reserve.breakfast.check();
     await reserve.earlyCheckIn.uncheck();
@@ -134,7 +134,7 @@ test.describe('追加プラン（素泊まり・直近の月曜から2泊・2人
   test('追加プラン-05（昼からチェックインプラン・お得な観光プラン）', async ({ page }) => {
     const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
     const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
-    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ 
+    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
     await reserve.fillStay(nearestDay(1), '2', '2');
     await reserve.breakfast.uncheck();
     await reserve.earlyCheckIn.check();
@@ -145,7 +145,7 @@ test.describe('追加プラン（素泊まり・直近の月曜から2泊・2人
   test('追加プラン-06（昼からチェックインプラン）', async ({ page }) => {
     const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
     const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
-    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ 
+    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
     await reserve.fillStay(nearestDay(1), '2', '2');
     await reserve.breakfast.uncheck();
     await reserve.earlyCheckIn.check();
@@ -156,7 +156,7 @@ test.describe('追加プラン（素泊まり・直近の月曜から2泊・2人
   test('追加プラン-07（お得な観光プラン）', async ({ page }) => {
     const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
     const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
-    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ 
+    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
     await reserve.fillStay(nearestDay(1), '2', '2');
     await reserve.breakfast.uncheck();
     await reserve.earlyCheckIn.uncheck();
@@ -167,7 +167,7 @@ test.describe('追加プラン（素泊まり・直近の月曜から2泊・2人
   test('追加プラン-08（追加プランなし）', async ({ page }) => {
     const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
     const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
-    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ 
+    await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
     await reserve.fillStay(nearestDay(1), '2', '2');
     await reserve.breakfast.uncheck();
     await reserve.earlyCheckIn.uncheck();
