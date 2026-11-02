@@ -1,5 +1,4 @@
 import { test, expect } from '@playwright/test';
-import { ReservePage } from '../pages/ReservePage';
 import { PlansPage } from '../pages/PlansPage';
 
 // 実行日から見て、直近の指定した曜日の日付を「yyyy/mm/dd」の形で返す。
