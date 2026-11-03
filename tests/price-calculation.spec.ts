@@ -16,12 +16,7 @@ function nearestDay(weekday: number): string {
     date.setDate(date.getDate() + 1);
   }
 
-  // 宿泊日の欄に入力できる「yyyy/mm/dd」の形にする
-  // getMonth() は 1月が 0 なので +1 する。1桁のときは前に 0 を付けて 2桁にする
-  const yyyy = date.getFullYear();
-  const mm = String(date.getMonth() + 1).padStart(2, '0');
-  const dd = String(date.getDate()).padStart(2, '0');
-  return `${yyyy}/${mm}/${dd}`;
+  return formatDate(date);
 }
 
 // 実行日から見て、直近の平日の祝日の日付を「yyyy/mm/dd」の形で返す。
@@ -37,7 +32,12 @@ function nearestWeekdayHoliday(): string {
     date.setDate(date.getDate() + 1);
   }
 
-  // 宿泊日の欄に入力できる「yyyy/mm/dd」の形にする
+  return formatDate(date);
+}
+
+// 日付を、宿泊日の欄に入力できる「yyyy/mm/dd」の形にする
+// getMonth() は 1月が 0 なので +1 する。1桁のときは前に 0 を付けて 2桁にする
+function formatDate(date: Date): string {
   const yyyy = date.getFullYear();
   const mm = String(date.getMonth() + 1).padStart(2, '0');
   const dd = String(date.getDate()).padStart(2, '0');
