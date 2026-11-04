@@ -44,7 +44,7 @@ function formatDate(date: Date): string {
   return `${yyyy}/${mm}/${dd}`;
 }
 
-test('曜日-01（素泊まり・直近の月曜から1泊・1人・追加なし）', async ({ page }) => {
+test('曜日-01（素泊まり・月曜から1泊・1人・追加なし）', async ({ page }) => {
   const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
@@ -52,7 +52,7 @@ test('曜日-01（素泊まり・直近の月曜から1泊・1人・追加なし
   await expect(reserve.total).toContainText('5,500円');
 });
 
-test('曜日-02（素泊まり・直近の土曜から1泊・1人・追加なし）', async ({ page }) => {
+test('曜日-02（素泊まり・土曜から1泊・1人・追加なし）', async ({ page }) => {
   const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
@@ -60,7 +60,7 @@ test('曜日-02（素泊まり・直近の土曜から1泊・1人・追加なし
   await expect(reserve.total).toContainText('6,875円');
 });
 
-test('曜日-03（素泊まり・直近の金曜から2泊・1人・追加なし）', async ({ page }) => {
+test('曜日-03（素泊まり・金曜から2泊・1人・追加なし）', async ({ page }) => {
   const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
@@ -68,7 +68,7 @@ test('曜日-03（素泊まり・直近の金曜から2泊・1人・追加なし
   await expect(reserve.total).toContainText('12,375円');
 });
 
-test('曜日-04（素泊まり・直近の日曜から2泊・1人・追加なし）', async ({ page }) => {
+test('曜日-04（素泊まり・日曜から2泊・1人・追加なし）', async ({ page }) => {
   const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
@@ -108,7 +108,7 @@ test('宿泊数-04（カップル限定プラン・月曜から2泊・2人・追
   await expect(reserve.total).toContainText('32,000円');
 });
 
-test('人数-02（素泊まり・直近の月曜から1泊・2人・追加なし）', async ({ page }) => {
+test('人数-02（素泊まり・月曜から1泊・2人・追加なし）', async ({ page }) => {
   const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
@@ -116,7 +116,7 @@ test('人数-02（素泊まり・直近の月曜から1泊・2人・追加なし
   await expect(reserve.total).toContainText('11,000円');
 });
 
-test.describe('追加プラン（素泊まり・直近の月曜から2泊・2人）', () => {
+test.describe('追加プラン（素泊まり・月曜から2泊・2人）', () => {
   test('追加プラン-01（朝食バイキング・昼からチェックインプラン・お得な観光プラン）', async ({ page }) => {
     const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
     const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
@@ -206,7 +206,7 @@ test.describe('追加プラン（素泊まり・直近の月曜から2泊・2人
   });
 });
 
-test('追加プラン-土日-01（素泊まり・直近の土曜から2泊・2人・朝食バイキング・昼からチェックインプラン・お得な観光プラン）', async ({ page }) => {
+test('追加プラン-土日-01（素泊まり・土曜から2泊・2人・朝食バイキング・昼からチェックインプラン・お得な観光プラン）', async ({ page }) => {
   const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
