@@ -36,9 +36,11 @@ hotel-planisphere-playwright/
  │  ├ test-analysis.md
  │  ├ test-design.md
  │  └ reviews/
+ ├ pages/
+ │  ├ PlansPage.ts
+ │  └ ReservePage.ts
  ├ tests/
- │  ├ login.spec.ts
- │  └ reserve.spec.ts
+ │  └ price-calculation.spec.ts
  ├ playwright.config.ts
  └ README.md
 ```
@@ -46,5 +48,11 @@ hotel-planisphere-playwright/
 ## ▶ 実行方法
 
     npm ci
-    npx playwright test
+    npm test
+    npm run report
     npx playwright test --ui
+
+## 🗓 保守
+
+曜日-05（平日の祝日）のテストは、祝日のパッケージ（@holiday-jp/holiday_jp）のデータに頼っています。
+祝日は国が決めて変わることがあるため、毎年2月ごろ（国の発表のあと）に、パッケージの今年と翌年の祝日が内閣府の一覧と合っているかを確かめます。
