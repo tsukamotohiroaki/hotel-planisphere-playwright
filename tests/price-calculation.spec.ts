@@ -49,7 +49,7 @@ test('曜日-01（素泊まり・月曜から1泊・1人・追加なし）', asy
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
   await reserve.fillStay(nearestDay(1), '1', '1');
-  await expect(reserve.total).toContainText('5,500円');
+  await expect(reserve.total).toHaveText('5,500円');
 });
 
 test('曜日-02（素泊まり・土曜から1泊・1人・追加なし）', async ({ page }) => {
@@ -57,7 +57,7 @@ test('曜日-02（素泊まり・土曜から1泊・1人・追加なし）', asy
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
   await reserve.fillStay(nearestDay(6), '1', '1');
-  await expect(reserve.total).toContainText('6,875円');
+  await expect(reserve.total).toHaveText('6,875円');
 });
 
 test('曜日-03（素泊まり・金曜から2泊・1人・追加なし）', async ({ page }) => {
@@ -65,7 +65,7 @@ test('曜日-03（素泊まり・金曜から2泊・1人・追加なし）', asy
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
   await reserve.fillStay(nearestDay(5), '2', '1');
-  await expect(reserve.total).toContainText('12,375円');
+  await expect(reserve.total).toHaveText('12,375円');
 });
 
 test('曜日-04（素泊まり・日曜から2泊・1人・追加なし）', async ({ page }) => {
@@ -73,7 +73,7 @@ test('曜日-04（素泊まり・日曜から2泊・1人・追加なし）', asy
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
   await reserve.fillStay(nearestDay(0), '2', '1');
-  await expect(reserve.total).toContainText('12,375円');
+  await expect(reserve.total).toHaveText('12,375円');
 });
 
 test('曜日-05（素泊まり・直近の平日の祝日から1泊・1人・追加なし）', async ({ page }) => {
@@ -81,7 +81,7 @@ test('曜日-05（素泊まり・直近の平日の祝日から1泊・1人・追
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
   await reserve.fillStay(nearestWeekdayHoliday(), '1', '1');
-  await expect(reserve.total).toContainText('5,500円');
+  await expect(reserve.total).toHaveText('5,500円');
 });
 
 test('宿泊数-02（素泊まり・月曜から9泊・1人・追加なし）', async ({ page }) => {
@@ -89,7 +89,7 @@ test('宿泊数-02（素泊まり・月曜から9泊・1人・追加なし）', 
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
   await reserve.fillStay(nearestDay(1), '9', '1');
-  await expect(reserve.total).toContainText('52,250円');
+  await expect(reserve.total).toHaveText('52,250円');
 });
 
 test('宿泊数-03（カップル限定プラン・月曜から1泊・2人・追加なし）', async ({ page }) => {
@@ -97,7 +97,7 @@ test('宿泊数-03（カップル限定プラン・月曜から1泊・2人・追
   const reserve = await plans.openReserve('カップル限定プラン');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('カップル限定プラン');   // 準備が終わるのを待つ
   await reserve.fillStay(nearestDay(1), '1', '2');
-  await expect(reserve.total).toContainText('16,000円');
+  await expect(reserve.total).toHaveText('16,000円');
 });
 
 test('宿泊数-04（カップル限定プラン・月曜から2泊・2人・追加なし）', async ({ page }) => {
@@ -105,7 +105,7 @@ test('宿泊数-04（カップル限定プラン・月曜から2泊・2人・追
   const reserve = await plans.openReserve('カップル限定プラン');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('カップル限定プラン');   // 準備が終わるのを待つ
   await reserve.fillStay(nearestDay(1), '2', '2');
-  await expect(reserve.total).toContainText('32,000円');
+  await expect(reserve.total).toHaveText('32,000円');
 });
 
 test('人数-02（素泊まり・月曜から1泊・2人・追加なし）', async ({ page }) => {
@@ -113,7 +113,7 @@ test('人数-02（素泊まり・月曜から1泊・2人・追加なし）', asy
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await expect(reserve.planName).toHaveText('素泊まり');   // 準備が終わるのを待つ
   await reserve.fillStay(nearestDay(1), '1', '2');
-  await expect(reserve.total).toContainText('11,000円');
+  await expect(reserve.total).toHaveText('11,000円');
 });
 
 test.describe('追加プラン（素泊まり・月曜から2泊・2人）', () => {
@@ -125,7 +125,7 @@ test.describe('追加プラン（素泊まり・月曜から2泊・2人）', () 
     await reserve.breakfast.check();
     await reserve.earlyCheckIn.check();
     await reserve.sightseeing.check();
-    await expect(reserve.total).toContainText('30,000円');
+    await expect(reserve.total).toHaveText('30,000円');
   });
 
   test('追加プラン-02（朝食バイキング・昼からチェックインプラン）', async ({ page }) => {
@@ -136,7 +136,7 @@ test.describe('追加プラン（素泊まり・月曜から2泊・2人）', () 
     await reserve.breakfast.check();
     await reserve.earlyCheckIn.check();
     await reserve.sightseeing.uncheck();
-    await expect(reserve.total).toContainText('28,000円');
+    await expect(reserve.total).toHaveText('28,000円');
   });
 
   test('追加プラン-03（朝食バイキング・お得な観光プラン）', async ({ page }) => {
@@ -147,7 +147,7 @@ test.describe('追加プラン（素泊まり・月曜から2泊・2人）', () 
     await reserve.breakfast.check();
     await reserve.earlyCheckIn.uncheck();
     await reserve.sightseeing.check();
-    await expect(reserve.total).toContainText('28,000円');
+    await expect(reserve.total).toHaveText('28,000円');
   });
 
   test('追加プラン-04（朝食バイキング）', async ({ page }) => {
@@ -158,7 +158,7 @@ test.describe('追加プラン（素泊まり・月曜から2泊・2人）', () 
     await reserve.breakfast.check();
     await reserve.earlyCheckIn.uncheck();
     await reserve.sightseeing.uncheck();
-    await expect(reserve.total).toContainText('26,000円');
+    await expect(reserve.total).toHaveText('26,000円');
   });
 
   test('追加プラン-05（昼からチェックインプラン・お得な観光プラン）', async ({ page }) => {
@@ -169,7 +169,7 @@ test.describe('追加プラン（素泊まり・月曜から2泊・2人）', () 
     await reserve.breakfast.uncheck();
     await reserve.earlyCheckIn.check();
     await reserve.sightseeing.check();
-    await expect(reserve.total).toContainText('26,000円');
+    await expect(reserve.total).toHaveText('26,000円');
   });
 
   test('追加プラン-06（昼からチェックインプラン）', async ({ page }) => {
@@ -180,7 +180,7 @@ test.describe('追加プラン（素泊まり・月曜から2泊・2人）', () 
     await reserve.breakfast.uncheck();
     await reserve.earlyCheckIn.check();
     await reserve.sightseeing.uncheck();
-    await expect(reserve.total).toContainText('24,000円');
+    await expect(reserve.total).toHaveText('24,000円');
   });
 
   test('追加プラン-07（お得な観光プラン）', async ({ page }) => {
@@ -191,7 +191,7 @@ test.describe('追加プラン（素泊まり・月曜から2泊・2人）', () 
     await reserve.breakfast.uncheck();
     await reserve.earlyCheckIn.uncheck();
     await reserve.sightseeing.check();
-    await expect(reserve.total).toContainText('24,000円');
+    await expect(reserve.total).toHaveText('24,000円');
   });
 
   test('追加プラン-08（追加プランなし）', async ({ page }) => {
@@ -202,7 +202,7 @@ test.describe('追加プラン（素泊まり・月曜から2泊・2人）', () 
     await reserve.breakfast.uncheck();
     await reserve.earlyCheckIn.uncheck();
     await reserve.sightseeing.uncheck();
-    await expect(reserve.total).toContainText('22,000円');
+    await expect(reserve.total).toHaveText('22,000円');
   });
 });
 
@@ -214,5 +214,5 @@ test('追加プラン-土日-01（素泊まり・土曜から2泊・2人・朝�
   await reserve.breakfast.check();
   await reserve.earlyCheckIn.check();
   await reserve.sightseeing.check();
-  await expect(reserve.total).toContainText('35,500円');
+  await expect(reserve.total).toHaveText('35,500円');
 });
