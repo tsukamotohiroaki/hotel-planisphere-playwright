@@ -48,7 +48,7 @@ test('曜日-01（素泊まり・月曜から1泊・1人・追加なし）', asy
   const plans = new PlansPage(page);                    // 宿泊プラン一覧の部品を作る
   const reserve = await plans.openReserve('素泊まり');   // プランを選んで、宿泊予約画面の部品を受け取る
   await reserve.fillStay(nearestDay(1), '1', '1');
-  await expect(reserve.total).toHaveText('5,500円');
+  await expect(reserve.total).toHaveText('55,500円');
 });
 
 test('曜日-02（素泊まり・土曜から1泊・1人・追加なし）', async ({ page }) => {
