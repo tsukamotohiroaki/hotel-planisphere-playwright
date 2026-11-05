@@ -48,6 +48,8 @@ hotel-planisphere-playwright/
 ## ▶ 実行方法
 
     npm ci
+    npx playwright install chromium
     npm test
     npm run report
     npx playwright test --ui
+    npx playwright test --trace on -g '曜日-01'
